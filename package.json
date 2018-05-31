@@ -8,10 +8,25 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "start": "node server/app.js",
+    "start-dev": "PORT=1337 nodemon server/app.js"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mysql": "^2.15.0",
+    "pg": "^7.4.3",
+    "pg-hstore": "^2.3.2",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "sequelize": "^4.37.10",
+    "webpack": "^4.10.2"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "enzyme": "^3.3.0",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "jest": "^23.1.0",
+    "supertest": "^3.1.0",
+    "webpack-dev": "^1.1.0"
   }
 }
