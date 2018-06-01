@@ -28,10 +28,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin([distDir]),
-    new HtmlWebpackPlugin({
-      template: path.join(rootDir, 'public/index.html'),
-      inject: 'body'
-    })
+    new CleanWebpackPlugin([distDir])
   ]
 };

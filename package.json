@@ -1,9 +1,13 @@
 {
-  "name": "",
-  "version": "",
-  "description": "",
-  "author": "",
-  "license": "",
+  "name": "BAMF: Vapor customerReviews Component",
+  "version": "0.1.0",
+  "description": "An Interactive Component + API for retrieving and filtering Customer Reviews of games.",
+  "author": "Zane Mattingly <z@matting.ly>",
+  "license": "Creative Commons Attribution-ShareAlike 3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hyperdrive-BAMF/customerReviews.git"
+  },
   "engines": {
     "node": ">=6.13.0"
   },
@@ -16,7 +20,6 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
-    "mysql": "^2.15.0",
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
     "react": "^16.4.0",
@@ -32,7 +35,7 @@
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.11",
     "enzyme": "^3.3.0",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^23.1.0",
     "style-loader": "^0.21.0",
