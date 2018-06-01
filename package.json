@@ -16,6 +16,7 @@
     "start-dev": "nodemon server/index.js",
     "build": "webpack-cli --progress --colors --mode development",
     "build-and-watch": "webpack-cli --progress --colors --mode development --watch",
+    "init-pg": "createdb customerReviews-dev",
     "lint": "eslint . --ext .js,.jsx"
   },
   "dependencies": {
