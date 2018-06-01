@@ -12,7 +12,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start": "node server/index.js",
+    "start": "node server/index.js & && open http://localhost:3003",
     "start-dev": "nodemon server/index.js",
     "build": "webpack-cli --progress --colors --mode development",
     "build-and-watch": "webpack-cli --progress --colors --mode development --watch",
