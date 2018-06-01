@@ -20,4 +20,4 @@ app.get('/', (req, res) => {
 });
 
 // Start receiving requests
-app.listen(process.env.PORT);
+app.listen(process.env.PORT || 3003);

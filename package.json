@@ -12,8 +12,8 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start": "node server/app.js",
-    "start-dev": "PORT=1337 nodemon server/app.js",
+    "start": "node server/index.js",
+    "start-dev": "nodemon server/index.js",
     "build": "webpack-cli --progress --colors --mode development",
     "build-and-watch": "webpack-cli --progress --colors --mode development --watch"
   },
