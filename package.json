@@ -16,8 +16,11 @@
     "start-dev": "nodemon server/index.js",
     "build": "webpack-cli --progress --colors --mode development",
     "build-and-watch": "webpack-cli --progress --colors --mode development --watch",
-    "lint": "eslint --ext .jsx ./client"
+    "lint": "eslint . --ext .js,.jsx"
   },
+  // "pre-commit": [
+  //   "lint"
+  // ],
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
@@ -42,7 +45,6 @@
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.8.2",
-    "html-webpack-plugin": "^3.2.0",
     "jest": "^23.1.0",
     "pre-commit": "^1.2.2",
     "style-loader": "^0.21.0",
