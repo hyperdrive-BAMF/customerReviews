@@ -1,5 +1,5 @@
 {
-  "name": "BAMF: Vapor customerReviews Component",
+  "name": "vapor-customer-reviews",
   "version": "0.1.0",
   "description": "An Interactive Component + API for retrieving and filtering Customer Reviews of games.",
   "author": "Zane Mattingly <z@matting.ly>",
