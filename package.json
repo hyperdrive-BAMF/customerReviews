@@ -18,9 +18,6 @@
     "build-and-watch": "webpack-cli --progress --colors --mode development --watch",
     "lint": "eslint . --ext .js,.jsx"
   },
-  // "pre-commit": [
-  //   "lint"
-  // ],
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
