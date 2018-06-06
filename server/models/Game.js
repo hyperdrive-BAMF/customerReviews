@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Game.associate = (models) => {
     Game.hasMany(models.Review, {
-      foreignKey: 'GameId',
+      foreignKey: 'gameId',
       onDelete: 'CASCADE'
     })
   };

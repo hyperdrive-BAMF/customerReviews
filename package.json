@@ -16,7 +16,7 @@
     "start-dev": "nodemon server/index.js",
     "build": "webpack-cli --progress --colors --mode development",
     "build-and-watch": "webpack-cli --progress --colors --mode development --watch",
-    "init-pg": "createdb customerReviews-dev",
+    "init-db": "createdb customerReviews-dev; sequelize db:migrate; sequelize db:seed:all",
     "lint": "eslint . --ext .js,.jsx"
   },
   "dependencies": {
