@@ -1,4 +1,3 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
     var Review = sequelize.define('Review', {
       title: DataTypes.STRING,
