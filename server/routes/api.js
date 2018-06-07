@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
+// The following is temporary, the DB will be hooked up later
+const dummyPrimaryReviewData = require("./../dummyPrimaryReviewData.json");
+const dummySummaryReviewData = require("./../dummySummaryReviewData.json");
+
 //    _____ __________.___  __________               __                 
 //   /  _  \\______   \   | \______   \ ____  __ ___/  |_  ____   ______
 //  /  /_\  \|     ___/   |  |       _//  _ \|  |  \   __\/ __ \ /  ___/
@@ -18,17 +22,11 @@ router.get('/game/:gameId', (req, res) => {
 });
 
 router.get('/game/:gameId/reviews/', (req, res) => {
-  res.json({
-    message: "The primary /game/:gameId/reviews/ endpoint is returning data.",
-    gameId: req.params.gameId
-  });
+  res.json(dummyPrimaryReviewData);
 });
 
 router.get('/game/:gameId/reviews/summary', (req, res) => {
-  res.json({
-    message: "The primary /game/:gameId/reviews/ endpoint is returning data.",
-    gameId: req.params.gameId
-  });
+  res.json(dummySummaryReviewData);
 });
 
 module.exports = router;
