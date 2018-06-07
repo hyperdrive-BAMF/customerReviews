@@ -106,7 +106,7 @@ var migrationCommands = [{
                     "type": Sequelize.DATE,
                     "allowNull": false
                 },
-                "GameId": {
+                "gameId": {
                     "type": Sequelize.INTEGER,
                     "onUpdate": "CASCADE",
                     "onDelete": "CASCADE",
@@ -116,7 +116,7 @@ var migrationCommands = [{
                     },
                     "allowNull": true
                 },
-                "AuthorId": {
+                "authorId": {
                     "type": Sequelize.INTEGER,
                     "onUpdate": "CASCADE",
                     "onDelete": "CASCADE",
@@ -133,7 +133,7 @@ var migrationCommands = [{
     {
         fn: "addIndex",
         params: [
-            "Reviews", ["GameId", "AuthorId"],
+            "Reviews", ["gameId", "authorId"],
             {
                 "indicesType": "UNIQUE"
             }

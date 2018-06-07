@@ -1,4 +1,3 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Game = sequelize.define('Game', {
     title: {
@@ -9,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Game.associate = (models) => {
     Game.hasMany(models.Review, {
-      foreignKey: 'GameId',
+      foreignKey: 'gameId',
       onDelete: 'CASCADE'
     })
   };

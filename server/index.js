@@ -14,9 +14,17 @@ app.use(bodyParser.json());
 app.use(express.static(publicDir));
 app.use(express.static(distDir));
 
-// Routes
+var apiRoutes = require('./routes/api');
+app.use('/api', apiRoutes);
+
+// Default Route
 app.get('/', (req, res) => {
   res.status(200).sendFile(path.join(publicDir, 'index.html'));
+});
+
+// 404 if all of the other handlers have fallen through
+app.get('*', (req, res) => {
+  res.status(404).json({message: "File Not Found"});
 });
 
 // Start receiving requests
