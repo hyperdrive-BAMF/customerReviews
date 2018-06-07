@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './Components/App.jsx';
+import CustomerReviews from './Components/CustomerReviews.jsx';
 
-console.log(App);
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<CustomerReviews />, document.getElementById('root'));
