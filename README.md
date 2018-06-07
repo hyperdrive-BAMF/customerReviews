@@ -55,7 +55,7 @@ If your environment is different you may need to consult relevant documentation.
 ##### 4. Create Database (PostgreSQL) and run initial Migration and Seeding
 
   ```sh 
-  $ npm run init-pg
+  $ npm run init-db
   ```
 
 ##### 5. Compile JS via Webpack
