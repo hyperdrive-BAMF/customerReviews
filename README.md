@@ -29,7 +29,7 @@ The following are the other 'Vapor' Component repos from my teammates.
 
 ## Usage
 
-### Local Installation / Start
+### Local Development Installation / Start
 
 Note that these instructions assume a MacOSX environment with [Homebrew](https://brew.sh/) installed.  
 If your environment is different you may need to consult relevant documentation.
@@ -52,7 +52,7 @@ If your environment is different you may need to consult relevant documentation.
   $ npm install
   ```
 
-##### 4. Init PostgreSQL Database
+##### 4. Create Database (PostgreSQL) and run initial Migration and Seeding
 
   ```sh 
   $ npm run init-pg

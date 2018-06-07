@@ -1,4 +1,3 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
     var Review = sequelize.define('Review', {
       title: DataTypes.STRING,
@@ -17,11 +16,11 @@ module.exports = (sequelize, DataTypes) => {
   );
   Review.associate = (models) => {
     Review.belongsTo(models.Game, {
-      foreignKey: 'GameId',
+      foreignKey: 'gameId',
       onDelete: 'CASCADE'
     });
     Review.belongsTo(models.User, {
-      foreignKey: 'AuthorId',
+      foreignKey: 'authorId',
       onDelete: 'CASCADE'
     });
   };
