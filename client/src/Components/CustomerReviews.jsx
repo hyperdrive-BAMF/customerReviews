@@ -1,16 +1,18 @@
-const React = require('react');
-const ReviewsChart require('./ReviewsChart.jsx');
-const ReviewsList require('./ReviewsList.jsx');
+import React from 'react';
+import ReviewsChart from './ReviewsChart.jsx';
+import ReviewsList from './ReviewsList.jsx';
 
-// NOTE: This will be refactored into a stateful component with ComponentDidMount API call
+//  _________                 __                             __________            .__                     
+//  \_   ___ \ __ __  _______/  |_  ____   _____   __________\______   \ _______  _|__| ______  _  ________
+//  /    \  \/|  |  \/  ___/\   __\/  _ \ /     \_/ __ \_  __ \       _// __ \  \/ /  |/ __ \ \/ \/ /  ___/
+//  \     \___|  |  /\___ \  |  | (  <_> )  Y Y  \  ___/|  | \/    |   \  ___/\   /|  \  ___/\     /\___ \ 
+//   \______  /____//____  > |__|  \____/|__|_|  /\___  >__|  |____|_  /\___  >\_/ |__|\___  >\/\_//____  >
+//          \/           \/                    \/     \/             \/     \/             \/           \/ 
+
 const CustomerReviews = (props) => (
-  <div class="customer-reviews">
+  <div className="customer-reviews">
     <header>
       <h3>Customer Reviews</h3>
-      <section>
-        Overall Reviews:<br />
-        <span>{ props.overallRating }</span> ({ props.totalReviews } reviews)
-      </section>
     </header>
     <ReviewsChart gameId={ props.gameId } />
     <ReviewsList gameId={ props.gameId } />

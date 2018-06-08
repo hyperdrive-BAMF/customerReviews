@@ -1,22 +1,39 @@
-const React = require('react');
-const Author = require('./Author.jsx');
+import React from 'react';
+import ReviewAuthor from './ReviewAuthor.jsx';
 
-const Review = (props) => (
-  <div class="review row">
-    <div class="col-md-3">
-      <Author authorUsername={ props.authorUsername } authorAvatarUrl={ props.authorAvatarUrl } />
-    </div>
-    <div class="col-md-9">
-      <header>
-        <img src="/images/icon-positive.png" />
-        { props.reviewRecommended }
+//  __________            .__               
+//  \______   \ _______  _|__| ______  _  __
+//   |       _// __ \  \/ /  |/ __ \ \/ \/ /
+//   |    |   \  ___/\   /|  \  ___/\     / 
+//   |____|_  /\___  >\_/ |__|\___  >\/\_/  
+//          \/     \/             \/        
+
+const Review = (props) => {
+
+  const recommendationHeader = props.recommended ? (
+      <header className="recommended">
+          Recommended
       </header>
-      <p>
-        <span>{ props.datePosted }</span>
-        { props.reviewContent }
-      </p>
+    ) : (
+      <header className="not-recommended">
+          Recommended
+      </header>
+    );
+
+  return (
+    <div className="review row">
+      <div className="col-md-3">
+        <ReviewAuthor authorUsername={ props.authorUsername } authorAvatarUrl={ props.authorAvatarUrl } />
+      </div>
+      <div className="col-md-9">
+        { recommendationHeader }
+        <article>
+          <span>{ props.datePosted }</span>
+          { props.content }
+        </article>
+      </div>
     </div>
-  </div>
-);
+  );
+}
 
 export default Review;
