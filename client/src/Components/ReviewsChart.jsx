@@ -1,8 +1,11 @@
-const React = require('react');
+import React from 'react';
 
 const ReviewsChart = (props) => (
-  <div class="reviews-chart">
-    <h4>...TBD...</h4>
+  <div className="reviews-chart">
+    <header>
+      <h6>Overall Reviews:</h6>
+      <h4><span>{ props.overallRating }</span> ({ props.totalReviews } reviews)</h4>
+    </header>
   </div>
 );
 
