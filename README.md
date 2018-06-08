@@ -2,11 +2,9 @@
 
 This repo is a portion of my Hack Reactor Front-End Capstone Project for cohort HRSF95 (project embarked early June 2018). This project encompasses the re-creation of a Product Experience modeled after an existing App's "Product Details Page", in the scope of service-oriented architecture.
 
-Our team ([BAMF](https://github.com/hyperdrive-BAMF)) chose [Steam's](https://store.steampowered.com) individual Game Store Pages, and my section mimick's the 'Customer Reviews' widget, comprised of graphed information tracking reviews over time, and a display of relevant reviews based on the user's choice of filters.
+Our team ([BAMF](https://github.com/hyperdrive-BAMF)) chose [Steam's](https://store.steampowered.com) individual Game Store Pages, and my section mimicks the 'Customer Reviews' widget, comprised of graphed information tracking reviews over time, and a display of relevant reviews based on the user's choice of filters.
 
-Once configured and running, this service is self-contained and independent of other concerns. Incoming page requests are served by Express and the index page is injected with the primary ReactJS Component (which has been compiled by Webpack). The component  then performs API Requests to the Express server and these are backed by a PostgreSQL database. Retrieved data then updates component state which re-renders  
-the ReactJS Component(s) as appropriate to deliver the client UI experience.
-
+Once configured and running, this service is self-contained and independent of other concerns. Incoming page requests are served by Express and the index page is injected with the primary ReactJS Component (which has been compiled by Webpack). The component  then performs API Requests to the Express server and these are backed by a PostgreSQL database. Retrieved data then updates component state which re-renders the ReactJS Component(s) as appropriate to deliver the client UI experience.
 
 ### Related Projects
 
@@ -21,13 +19,19 @@ The following are the other 'Vapor' Component repos from my teammates.
 1. [Requirements](#requirements)
 1. [Development](#development)
 
+## Usage
+
+The interface for the Customer Reviews component is [TBD].
+
+See 'Local Development Installation / Start' to run the project on your local machine.
+
 ## Requirements
 
 - `Node` _(version used: 10.3.0)_
 - `npm` _(version used: 6.1.0)_
 - `PostgreSQL` _(version used: 10.4)_
 
-## Usage
+## Development
 
 ### Local Development Installation / Start
 
