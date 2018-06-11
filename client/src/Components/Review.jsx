@@ -1,6 +1,7 @@
 import React from 'react';
 import ReviewAuthor from './ReviewAuthor.jsx';
 
+import './../styles/Review.scss';
 //  __________            .__               
 //  \______   \ _______  _|__| ______  _  __
 //   |       _// __ \  \/ /  |/ __ \ \/ \/ /
@@ -10,13 +11,15 @@ import ReviewAuthor from './ReviewAuthor.jsx';
 
 const Review = (props) => {
 
+  const reviewDate = new Date(props.datePosted);
+
   const recommendationHeader = props.recommended ? (
       <header className="recommended">
-          Recommended
+          <span>Recommended</span>
       </header>
     ) : (
       <header className="not-recommended">
-          Recommended
+          <span>Not Recommended</span>
       </header>
     );
 
@@ -26,10 +29,14 @@ const Review = (props) => {
         <ReviewAuthor authorUsername={ props.authorUsername } authorAvatarUrl={ props.authorAvatarUrl } />
       </div>
       <div className="col-md-9">
-        { recommendationHeader }
         <article>
-          <span>{ props.datePosted }</span>
-          { props.content }
+          { recommendationHeader }
+          <span class="posted-date">
+            Posted: { reviewDate.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' }) }
+          </span>
+          <div class="content">
+            { props.content }
+          </div>
         </article>
       </div>
     </div>

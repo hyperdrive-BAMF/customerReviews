@@ -1,6 +1,7 @@
 import React from 'react';
 import Review from './Review.jsx';
 
+import './../styles/ReviewsList.scss';
 //  __________            .__                    .____    .__          __   
 //  \______   \ _______  _|__| ______  _  _______|    |   |__| _______/  |_ 
 //   |       _// __ \  \/ /  |/ __ \ \/ \/ /  ___/    |   |  |/  ___/\   __\
@@ -17,17 +18,20 @@ class ReviewsList extends React.Component {
     };
   }
 
-  componentDidMount() {
+  fetchReviews() {
     // Simple GET Request
     fetch(`/api/game/${this.props.gameId}/reviews/`)
       .then((res) => {
         if (!res.ok) {
           throw new Error("An error occurred while retrieving the review data. Please try again.");
         }
-
         return res.json(); 
       })
       .then((reviews) => {
+        // Ensure our Reviews are sorted chronologically
+        reviews.sort((reviewA, reviewB) => {
+          return new Date(reviewB.date_posted) - new Date(reviewA.date_posted);
+        });
         this.setState({ reviews });
       })
       .catch((err) => {
@@ -35,6 +39,10 @@ class ReviewsList extends React.Component {
         // with the error text for the user (cb from main root Component?)
         console.error(err);
       });
+  }
+
+  componentDidMount() {
+    this.fetchReviews();
   }
 
   render() {

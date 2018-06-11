@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CustomerReviews from './Components/CustomerReviews.jsx';
+import CustomerReviews from './components/CustomerReviews.jsx';
+
+import './styles/app.scss';
 
 ReactDOM.render(<CustomerReviews gameId="1" />, document.getElementById('root'));
