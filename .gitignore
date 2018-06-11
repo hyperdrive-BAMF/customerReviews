@@ -36,6 +36,9 @@ build/Release
 node_modules/
 jspm_packages/
 
+# 'built' directories
+*dist/
+
 # TypeScript v1 declaration files
 typings/
 
@@ -59,3 +62,6 @@ typings/
 
 # next.js build output
 .next
+
+# database config
+server/config/config.json
