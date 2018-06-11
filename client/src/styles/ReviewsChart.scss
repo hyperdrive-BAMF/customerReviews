@@ -1,0 +1,36 @@
+@import './app.scss';
+//      ____            _                   ________               __     _____ __        ___            
+//     / __ \___ _   __(_)__ _      _______/ ____/ /_  ____ ______/ /_   / ___// /___  __/ (_)___  ____ _
+//    / /_/ / _ \ | / / / _ \ | /| / / ___/ /   / __ \/ __ `/ ___/ __/   \__ \/ __/ / / / / / __ \/ __ `/
+//   / _, _/  __/ |/ / /  __/ |/ |/ (__  ) /___/ / / / /_/ / /  / /_    ___/ / /_/ /_/ / / / / / / /_/ / 
+//  /_/ |_|\___/|___/_/\___/|__/|__/____/\____/_/ /_/\__,_/_/   \__/   /____/\__/\__, /_/_/_/ /_/\__, /  
+//                                                                              /____/          /____/   
+
+.reviews-chart {
+  margin-bottom: 20px;
+
+  header {
+    background-color: $blueSteel;
+    border: solid 1px $theAbyss;
+    color: $overcastSky;
+    display: block;
+    min-height: 38px;
+    padding: 10px;
+
+    h5 {
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    h4 {
+      color: $shaleSlate;
+      font-size: 12px;
+
+      span {
+        color: $tealZeal;
+        font-size: 17px;
+        font-weight: bold;
+      }
+    }
+  }
+}

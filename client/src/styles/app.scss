@@ -1,0 +1,119 @@
+//   _____            _____ _       _         
+//  |  _  |___ ___   |   __| |_ _ _| |___ ___ 
+//  |     | . | . |  |__   |  _| | | | -_|_ -|
+//  |__|__|  _|  _|  |_____|_| |_  |_|___|___|
+//        |_| |_|              |___|          
+
+// App-wide styles that generally provide rules or utilities across the board.
+// Mostly centered around typography and a simple CSS Grid Layout implementation.
+
+/*
+APP-WIDE VARIABLES
+*/
+
+// Typography
+$primaryFontFamily: "Motiva Sans", Sans-serif;
+
+// Colors
+/* Blue Shades */
+$cobaltSea:  #19273A;
+$blueSteel:  #244660;
+$royalDuvet: #2A475E;
+$tealZeal:   #4CBFFA;
+/* White/Grey */
+$shaleSlate:   #ACB2B8;
+$officeGravel: #8091A2;
+$overcastSky:  #E5E5E5;
+/* Dark/Black */
+$theAbyss:     #141F2E;
+$midnightSand: #00000033;
+
+// Base Style
+body {
+  background-color: $cobaltSea;
+  color: $shaleSlate;
+  font-family: $primaryFontFamily;
+}
+
+/*
+RESPONSIVE DESIGN UTILITIES
+*/
+
+// Device Breakpoints and associated Media Query Mixins (Usage TBD)
+$phone-min:   320px;
+$phone-max:   480px;
+$tablet-min:  768px;
+$desktop-min: 1024px;
+
+@mixin phone {
+  @media (min-width: #{$phone-width}) and (max-width: #{$phone-max}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+// UI Breakpoints and associated Media Query Mixins
+$size-md-min: 992px;
+
+@mixin size-md {
+  @media (min-width: #{$size-md-min}) {
+    @content;
+  }
+}
+
+/*
+GRID LAYOUT / STRUCTURE
+  Implemented in the general naming convention of Bootstrap Grid
+  [ .container, .row, .col-(size)-(column span), etc ]
+*/
+$total-columns: 12;
+
+// Container (.container)
+// Boundary-defining top-level class, within which you may nest your .row elements 
+// (and subsequently each of the .row element's .col-* elements)
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+
+  @include size-md {
+    // Will switch to a fix-width "viewport" by defining a width here when the
+    // window or device's own width value is below our $container-min value
+    width: 970px;
+  }
+}
+
+// Rows (.row)
+// Da real CSS Grid Container MVP
+.row {
+  display: grid;
+  grid-template-columns: repeat($total-columns, 1fr);
+  grid-gap: 10px;
+}
+
+// Columns (.col-*)
+
+// .col-<size>-<span>
+// size: When within the corresponding breakpoint, sets the element's span width
+// span: how many columns wide the element should be within its parent .row
+
+// col-size-span-list: Generates our necessary classes + corresponding grid-column values
+@mixin col-size-span-list($size) {
+  @for $i from 1 through $total-columns {
+    .col-#{$size}-#{$i} {
+      grid-column: span #{$i};
+    }
+  }
+}
+// Invoke immediately to generate classes (we're only using md for v1)
+@include col-size-span-list("md"); 
