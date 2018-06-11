@@ -1,11 +1,11 @@
-//   _______                   _______ __          __              
-//  |   _   |.-----.-----.    |     __|  |_.--.--.|  |.-----.-----.
-//  |       ||  _  |  _  |    |__     |   _|  |  ||  ||  -__|__ --|
-//  |___|___||   __|   __|    |_______|____|___  ||__||_____|_____|
-//           |__|  |__|                    |_____|                 
+//   _____            _____ _       _         
+//  |  _  |___ ___   |   __| |_ _ _| |___ ___ 
+//  |     | . | . |  |__   |  _| | | | -_|_ -|
+//  |__|__|  _|  _|  |_____|_| |_  |_|___|___|
+//        |_| |_|              |___|          
 
-// App-wide styles that generally apply across the board.
-// Mostly centered around typography and the CSS Grid Layout
+// App-wide styles that generally provide rules or utilities across the board.
+// Mostly centered around typography and a simple CSS Grid Layout implementation.
 
 /*
 APP-WIDE VARIABLES
@@ -15,19 +15,34 @@ APP-WIDE VARIABLES
 $primaryFontFamily: "Motiva Sans", Sans-serif;
 
 // Colors
-$theAbyss: #141F2E;
-$cobaltSea: #19273A;
-$blueSteel: #244660;
-$tealZeal: #4CBFFA;
+/* Blue Shades */
+$cobaltSea:  #19273A;
+$blueSteel:  #244660;
+$royalDuvet: #2A475E;
+$tealZeal:   #4CBFFA;
+/* White/Grey */
+$shaleSlate:   #ACB2B8;
+$officeGravel: #8091A2;
+$overcastSky:  #E5E5E5;
+/* Dark/Black */
+$theAbyss:     #141F2E;
+$midnightSand: #00000033;
+
+// Base Style
+body {
+  background-color: $cobaltSea;
+  color: $shaleSlate;
+  font-family: $primaryFontFamily;
+}
 
 /*
 RESPONSIVE DESIGN UTILITIES
 */
 
 // Device Breakpoints and associated Media Query Mixins (Usage TBD)
-$phone-min: 320px;
-$phone-max: 480px;
-$tablet-min: 768px;
+$phone-min:   320px;
+$phone-max:   480px;
+$tablet-min:  768px;
 $desktop-min: 1024px;
 
 @mixin phone {
@@ -52,7 +67,7 @@ $desktop-min: 1024px;
 $size-md-min: 992px;
 
 @mixin size-md {
-  @media (min-width: #{$md-min}) {
+  @media (min-width: #{$size-md-min}) {
     @content;
   }
 }
@@ -95,10 +110,10 @@ $total-columns: 12;
 // col-size-span-list: Generates our necessary classes + corresponding grid-column values
 @mixin col-size-span-list($size) {
   @for $i from 1 through $total-columns {
-    .col-#{$size}-#{i} {
-      grid-column: span #{i};
+    .col-#{$size}-#{$i} {
+      grid-column: span #{$i};
     }
   }
 }
-// Invoke immediately to generate classes, we're only doing md for now
+// Invoke immediately to generate classes (we're only using md for v1)
 @include col-size-span-list("md"); 

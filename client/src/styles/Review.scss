@@ -1,0 +1,49 @@
+@import './app.scss';
+//      ____            _                 _____ __        ___            
+//     / __ \___ _   __(_)__ _      __   / ___// /___  __/ (_)___  ____ _
+//    / /_/ / _ \ | / / / _ \ | /| / /   \__ \/ __/ / / / / / __ \/ __ `/
+//   / _, _/  __/ |/ / /  __/ |/ |/ /   ___/ / /_/ /_/ / / / / / / /_/ / 
+//  /_/ |_|\___/|___/_/\___/|__/|__/   /____/\__/\__, /_/_/_/ /_/\__, /  
+//                                              /____/          /____/   
+
+.review {
+  background-color: $theAbyss;
+  border-top: 1px solid $blueSteel;
+  margin-bottom: 20px;
+  padding-top: 5px;
+
+  article {
+
+    header {
+      font-size: 16px;
+      height: 40px;
+      margin-bottom: 10px;
+
+      span {
+        line-height: 40px;
+        margin-left: 50px;
+      }
+
+      &.recommended {
+        background: url("/images/icons/thumbsUp.png") $midnightSand top left no-repeat;
+      }
+
+      &.not-recommended {
+        background: url("/images/icons/thumbsDown.png") $midnightSand top left no-repeat;
+      }
+    }
+
+    .posted-date {
+      display: block;
+      color: $officeGravel;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .content {
+      display: block;
+      margin: 0 10px 10px 0;
+      white-space: pre-wrap;
+    }
+  }
+}

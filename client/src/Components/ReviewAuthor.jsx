@@ -1,5 +1,6 @@
 import React from 'react';
 
+import './../styles/ReviewAuthor.scss';
 //  __________            .__                _____          __  .__                  
 //  \______   \ _______  _|__| ______  _  __/  _  \  __ ___/  |_|  |__   ___________ 
 //   |       _// __ \  \/ /  |/ __ \ \/ \/ /  /_\  \|  |  \   __\  |  \ /  _ \_  __ \
@@ -10,7 +11,7 @@ import React from 'react';
 const ReviewAuthor = (props) => (
   <div className="review-author">
     <img src={ props.authorAvatarUrl } />
-    { props.authorUsername }
+    <span>{ props.authorUsername }</span>
   </div>
 );
 

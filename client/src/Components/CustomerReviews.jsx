@@ -2,6 +2,7 @@ import React from 'react';
 import ReviewsChart from './ReviewsChart.jsx';
 import ReviewsList from './ReviewsList.jsx';
 
+import './../styles/CustomerReviews.scss';
 //  _________                 __                             __________            .__                     
 //  \_   ___ \ __ __  _______/  |_  ____   _____   __________\______   \ _______  _|__| ______  _  ________
 //  /    \  \/|  |  \/  ___/\   __\/  _ \ /     \_/ __ \_  __ \       _// __ \  \/ /  |/ __ \ \/ \/ /  ___/
