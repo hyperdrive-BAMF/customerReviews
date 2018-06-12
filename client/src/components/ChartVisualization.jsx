@@ -13,44 +13,35 @@ import './../styles/ChartVisualization.scss';
 class ChartVisualization extends React.Component {
 
   componentDidMount() {
-    const margins = { top: 15, right: 10, bottom: 50, left: 50 };
-    const width = this.props.fullWidth - margins.right - margins.left;
-    const height = this.props.fullHeight - margins.top - margins.bottom;
+    const fullWidth = this.props.fullWidth;
+    const fullHeight = this.props.fullHeight;
+
+    const margins = { top: 15, right: 10, bottom: 30, left: 50 };
+    const width = fullWidth - margins.right - margins.left;
+    const height = fullHeight - margins.top - margins.bottom;
 
     const allDates = this.props.dataset.map(datum => datum.date);
 
     const svg = d3.select(this.svgElement)
-      .attr('width', this.props.fullWidth)
-      .attr('height', this.props.fullHeight)
+      .attr('width', fullWidth)
+      .attr('height', fullHeight)
       .append('g')
         .attr('transform', `translate(${margins.left}, ${margins.top})`);
 
     // x scale
-    const dateScale = d3.scaleBand()
+    const xScale = d3.scaleBand()
       .domain(allDates)
       .range([0, width])
       .paddingInner(0.2); // Add a bit of padding between each bar
 
     // y scale
     const maxPositiveReviews = d3.max(this.props.dataset, datum => datum.positive);
-    const positiveReviewScale = d3.scaleLinear()
+    const positiveScale = d3.scaleLinear()
       .range([height, 0])
       .domain([0, maxPositiveReviews])
       .nice(); // round the domain values
 
-    const xAxis = d3.axisBottom(dateScale);
-    const yAxis = d3.axisLeft(positiveReviewScale);
-
-    // Now draw everything
-    const xAxisElement = svg.append('g')
-      .classed('x axis', true)
-      .attr('transform', `translate(-8, ${height + 4})`)
-      .call(xAxis)
-      .selectAll("text")
-      .style("text-anchor", "end")
-      .attr('transform', 'rotate(270)')
-      .attr('dy', '.35em');
-      // .attr('transform', 'translate(0, 30)');
+    const yAxis = d3.axisLeft(positiveScale);
 
     const yAxisElement = svg.append('g')
       .classed('y axis', true)
@@ -59,17 +50,44 @@ class ChartVisualization extends React.Component {
 
     // TODO: Add label to the yAxis
 
-    const barsContainer = svg.append('g')
-      .classed('bars-container', true);
+    const positiveBarsContainer = svg.append('g')
+      .classed('positive-bars-container', true);
 
-    const bars = barsContainer.selectAll('rect.bar')
+    const positiveBars = positiveBarsContainer.selectAll('rect.bar')
       .data(this.props.dataset)
       .enter().append('rect')
       .classed('bar', true)
-      .attr('x', datum => dateScale(datum.date))
-      .attr('width', dateScale.bandwidth())
-      .attr('y', datum => positiveReviewScale(datum.positive))
-      .attr('height', datum => (height - positiveReviewScale(datum.positive)));
+      .attr('title', datum => new Date(datum.date).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' }))
+      .attr('x', datum => xScale(datum.date))
+      .attr('width', xScale.bandwidth())
+      .attr('y', datum => positiveScale(datum.positive))
+      .attr('height', datum => (height - positiveScale(datum.positive)))
+      .on("mouseover", function(datum, i) {
+        var rect = d3.select(this);
+        rect.classed('selected', true);
+
+        var rectX = Math.floor(rect.attr('x'));
+        var rectY = Math.floor(rect.attr('y'));
+
+        var text = svg.append('text');
+        text
+          .classed('date-summary', true)
+          .attr('id', `tooltip-${rectX}-${rectY}-${i}`)
+          .text(`${datum.positive.toLocaleString()} positive reviews on ${datum.date}`)
+          .attr('x', function() {
+            return (width / 2) - (this.getBoundingClientRect().width / 2) - 10;
+          })
+          .attr('y', height + 23 );
+      })
+      .on("mouseout", function(datum, i) {
+        var rect = d3.select(this);
+        rect.classed('selected', false);
+
+        var rectX = Math.floor(rect.attr('x'));
+        var rectY = Math.floor(rect.attr('y'));
+
+        svg.select(`#tooltip-${rectX}-${rectY}-${i}`).remove();
+      });
   }
 
   shouldComponentUpdate() {

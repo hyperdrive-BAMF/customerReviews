@@ -12,25 +12,28 @@
   color: $overcastSky;
 
   svg {
-    text {
-      fill: $officeGravel;
+    text.date-summary {
+      fill: #FFF;
+      font-weight: bold;
+      font-size: 17px;
+      letter-spacing: 2px;
+      border: solid 2px red;
     }
 
     rect {
       fill: $tealZeal;
     }
 
-    .axis.x {
-      path {
-        display: none;
-      }
-      .tick line {
-        display: none;
-      }
+    rect.selected {
+      fill: #FFF;
     }
+
     .axis.y {
       path, line {
         stroke: $officeGravel;
+      }
+      text {
+        fill: $officeGravel;
       }
 
     }
