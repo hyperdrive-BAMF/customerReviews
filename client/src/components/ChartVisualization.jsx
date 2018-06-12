@@ -41,7 +41,7 @@ class ChartVisualization extends React.Component {
       .domain([0, maxPositiveReviews])
       .nice(); // round the domain values
 
-    const yAxis = d3.axisLeft(positiveScale);
+    const yAxis = d3.axisLeft(positiveScale).ticks(5);
 
     const yAxisElement = svg.append('g')
       .classed('y axis', true)
