@@ -69,8 +69,7 @@ class ChartVisualization extends React.Component {
         var rectX = Math.floor(rect.attr('x'));
         var rectY = Math.floor(rect.attr('y'));
 
-        var text = svg.append('text');
-        text
+        svg.append('text')
           .classed('date-summary', true)
           .attr('id', `tooltip-${rectX}-${rectY}-${i}`)
           .text(`${datum.positive.toLocaleString()} positive reviews on ${datum.date}`)
@@ -104,26 +103,5 @@ class ChartVisualization extends React.Component {
   }
 
 }
-
-
-
-
-// const ChartVisualization = (props) => {
-
-//   const margins = { top: 5, right: 5, bottom: 50, left: 50 };
-//   const width = props.fullWidth - margins.right - margins.left;
-//   const height = props.fullHeight - margins.top - margins.bottom;
-
-//   return (
-//     <div className="chart-visualization">
-//       <svg
-//         height={props.fullHeight}
-//         width={props.fullWidth}
-//       >
-
-//       </svg>
-//     </div>
-//   );
-// };
 
 export default ChartVisualization;
