@@ -31,10 +31,10 @@ const Review = (props) => {
       <div className="col-md-9">
         <article>
           { recommendationHeader }
-          <span class="posted-date">
+          <span className="posted-date">
             Posted: { reviewDate.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' }) }
           </span>
-          <div class="content">
+          <div className="content">
             { props.content }
           </div>
         </article>
