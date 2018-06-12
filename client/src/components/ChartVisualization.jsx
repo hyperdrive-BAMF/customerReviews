@@ -48,8 +48,6 @@ class ChartVisualization extends React.Component {
       .attr('transform', 'translate(-5, 0)')
       .call(yAxis);
 
-    // TODO: Add label to the yAxis
-
     const positiveBarsContainer = svg.append('g')
       .classed('positive-bars-container', true);
 
