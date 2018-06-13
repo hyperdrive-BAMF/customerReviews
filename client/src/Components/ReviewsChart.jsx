@@ -54,7 +54,7 @@ class ReviewsChart extends React.Component {
     let totalPositive = 0;
     let totalNegative = 0;
 
-    this.state.reviewSummaries.forEach((reviewSummary) => {
+    this.state.reviewSummaries.forEach(reviewSummary => {
       totalPositive += reviewSummary.positive;
       totalNegative += reviewSummary.negative;
       totalReviews += (reviewSummary.positive + reviewSummary.negative);

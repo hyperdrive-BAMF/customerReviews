@@ -95,7 +95,7 @@ class ChartVisualization extends React.Component {
   render() {
     return (
       <div className="chart-visualization">
-        <svg ref={ (elem) => { this.svgElement = elem; } } />
+        <svg ref={ elem => { this.svgElement = elem; } } />
       </div>
     );
   }
