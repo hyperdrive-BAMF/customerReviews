@@ -1,0 +1,41 @@
+@import './app.scss';
+//     ________               __ _    ___                  ___            __  _                _____ __        ___            
+//    / ____/ /_  ____ ______/ /| |  / (_)______  ______ _/ (_)___ ____ _/ /_(_)___  ____     / ___// /___  __/ (_)___  ____ _
+//   / /   / __ \/ __ `/ ___/ __/ | / / / ___/ / / / __ `/ / /_  // __ `/ __/ / __ \/ __ \    \__ \/ __/ / / / / / __ \/ __ `/
+//  / /___/ / / / /_/ / /  / /_ | |/ / (__  ) /_/ / /_/ / / / / // /_/ / /_/ / /_/ / / / /   ___/ / /_/ /_/ / / / / / / /_/ / 
+//  \____/_/ /_/\__,_/_/   \__/ |___/_/____/\__,_/\__,_/_/_/ /___|__,_/\__/_/\____/_/ /_/   /____/\__/\__, /_/_/_/ /_/\__, /  
+//                                                                                                   /____/          /____/   
+
+.chart-visualization {
+  background-color: $blueSteel;
+  border: solid 1px $theAbyss;
+  color: $overcastSky;
+
+  svg {
+    text.date-summary {
+      fill: #FFF;
+      font-weight: bold;
+      font-size: 17px;
+      letter-spacing: 2px;
+      border: solid 2px red;
+    }
+
+    rect {
+      fill: $tealZeal;
+    }
+
+    rect.selected {
+      fill: #FFF;
+    }
+
+    .axis.y {
+      path, line {
+        stroke: $officeGravel;
+      }
+      text {
+        fill: $officeGravel;
+      }
+
+    }
+  }
+}
