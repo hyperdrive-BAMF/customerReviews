@@ -77,7 +77,6 @@ router.get('/game/:gameId/reviews/summary', (req, res) => {
   }).then((reviewsSummary) => {
     res.json(reviewsSummary);
   });
-  // res.json(dummySummaryReviewData);
 });
 
 module.exports = router;
