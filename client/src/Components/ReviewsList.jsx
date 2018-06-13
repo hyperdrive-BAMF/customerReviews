@@ -35,8 +35,6 @@ class ReviewsList extends React.Component {
         this.setState({ reviews });
       })
       .catch((err) => {
-        // TODO: Change this to instead create a modal/notice 
-        // with the error text for the user (cb from main root Component?)
         console.error(err);
       });
   }
