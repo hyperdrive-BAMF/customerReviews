@@ -89,9 +89,6 @@ var migrationCommands = [{
                     "primaryKey": true,
                     "allowNull": false
                 },
-                "title": {
-                    "type": Sequelize.STRING
-                },
                 "content": {
                     "type": Sequelize.TEXT
                 },
