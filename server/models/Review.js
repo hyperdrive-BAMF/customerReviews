@@ -1,6 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
     var Review = sequelize.define('Review', {
-      title: DataTypes.STRING,
       content: DataTypes.TEXT,
       positive: DataTypes.BOOLEAN
     },
@@ -21,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     });
     Review.belongsTo(models.User, {
       foreignKey: 'authorId',
+      as: 'author',
       onDelete: 'CASCADE'
     });
   };
