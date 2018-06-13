@@ -29,16 +29,12 @@ router.get('/game/:gameId', (req, res) => {
         game
       });
     })
-    .catch((err) => {
-      // This will be caught by our Error Middleware
-      throw new Error({message: err});
-    });
 });
 
 router.get('/game/:gameId/reviews/', (req, res) => {
-
+  // Return a JSON response with all reviews for the game by Id,
+  // including the 'author' User information as well
   models.Review.findAll({
-
     include: [
       {
         model: models.Game,
@@ -58,7 +54,8 @@ router.get('/game/:gameId/reviews/', (req, res) => {
 });
 
 router.get('/game/:gameId/reviews/summary', (req, res) => {
-
+  // Return a JSON response with a summary of reviews by date with a count
+  // of how many were positive and how many were negative
   models.Review.findAll({
     attributes: [
       [models.sequelize.fn('date_trunc', 'day', models.sequelize.col('Review.createdAt')), 'date'],
