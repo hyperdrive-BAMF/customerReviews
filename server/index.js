@@ -14,6 +14,11 @@ app.use(bodyParser.json());
 app.use(express.static(publicDir));
 app.use(express.static(distDir));
 
+// The Supar Generic Final Error Middleware
+app.use(function(err, req, res, next) {
+  res.status(err.statusCode || 500).send(err.message);
+});
+
 var apiRoutes = require('./routes/api');
 app.use('/api', apiRoutes);
 
