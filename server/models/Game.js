@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  var Game = sequelize.define('Game', {
+  const Game = sequelize.define('Game', {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     Game.hasMany(models.Review, {
       foreignKey: 'gameId',
       onDelete: 'CASCADE'
-    })
+    });
   };
   return Game;
 };

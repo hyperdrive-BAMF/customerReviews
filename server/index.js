@@ -1,25 +1,24 @@
 // Init express
-const express = require ('express');
-const app = express();
-
-// Paths
+const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
+const apiRoutes = require('./routes/api');
+
+// App
+const app = express();
+// Paths
 const rootDir = path.join(__dirname, '..');
 const publicDir = path.join(rootDir, 'public');
 const distDir = path.join(rootDir, 'client', 'dist');
-
 // Middleware
-const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(express.static(publicDir));
 app.use(express.static(distDir));
-
 // The Supar Generic Final Error Middleware
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
   res.status(err.statusCode || 500).send(err.message);
 });
-
-var apiRoutes = require('./routes/api');
+// Routes
 app.use('/api', apiRoutes);
 
 // Default Route
@@ -29,7 +28,7 @@ app.get('/', (req, res) => {
 
 // 404 if all of the other handlers have fallen through
 app.get('*', (req, res) => {
-  res.status(404).json({message: "File Not Found"});
+  res.status(404).json({ message: 'File Not Found' });
 });
 
 // Start receiving requests
