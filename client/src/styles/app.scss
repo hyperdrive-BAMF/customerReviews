@@ -31,7 +31,7 @@ $midnightSand: #00000033;
 
 // Base Style
 body {
-  background-color: $cobaltSea;
+  background: linear-gradient($blueSteel, $cobaltSea);
   color: $shaleSlate;
   font-family: $primaryFontFamily;
 }
