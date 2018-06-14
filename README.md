@@ -47,8 +47,10 @@ If your environment is different you may need to consult relevant documentation.
 ##### 2. Start the postgresql service
 
   ```sh
-  $ brew service start postgresql
+  $ brew services start postgresql
   ``` 
+
+##### 3. TODO: NEED TO ADD INSTRUCTIONS HERE ABOUT SETTING UP postgres user and config.json!!!
 
 ##### 3. Install Node Dependencies (while in this repo's root directory)  
 
