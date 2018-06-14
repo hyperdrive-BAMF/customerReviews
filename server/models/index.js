@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 const config = require('./../config/config.json')[process.env.NODE_ENV || 'development'];
-var pg = require('pg');
+const pg = require('pg');
 pg.defaults.parseInt8 = true;
 
 const basename = path.basename(__filename);
