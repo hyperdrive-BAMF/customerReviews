@@ -6,7 +6,26 @@
 //  /_/ |_|\___/|___/_/\___/|__/|__/____/_____/_/____/\__/   /____/\__/\__, /_/_/_/ /_/\__, /  
 //                                                                    /____/          /____/   
 
-.reviews-list {
+.customer-reviews .reviews-list {
   border-top: solid 2px $midnightSand;
-  padding-top: 10px;
+  padding: 10px 0 20px;
+
+  .load-button {
+    color: $overcastSky;
+    background-color: $wildAzure;
+    border: solid 1px $wildAzure;
+    border-radius: 8px;
+    line-height: 30px;
+    font-size: 20px;
+    min-height: 30px;
+    width: 80%;
+    margin: 0 10%;
+  }
+
+  .load-button:hover {
+    color: #FFF;
+  }
+  .load-button:focus {
+    outline: none;
+  }
 }

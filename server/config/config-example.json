@@ -1,16 +1,8 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "customerReviews-dev",
-    "host": "127.0.0.1",
-    "port": 5432,
-    "dialect": "postgres"
-  },
-  "test": {
-    "username": "root",
-    "password": null,
-    "database": "customerReviews-test",
+    "username": "<username>",
+    "password": "<password>",
+    "database": "customerReviews",
     "host": "127.0.0.1",
     "port": 5432,
     "dialect": "postgres"

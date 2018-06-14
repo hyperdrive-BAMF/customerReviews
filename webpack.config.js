@@ -9,7 +9,7 @@ module.exports = {
   entry: path.join(srcDir, 'index.jsx'),
   output: {
     path: distDir,
-    filename: 'bundle.js'
+    filename: 'CustomerReviews.js'
   },
   module: {
     rules: [

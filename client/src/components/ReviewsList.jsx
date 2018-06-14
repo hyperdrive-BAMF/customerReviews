@@ -15,12 +15,31 @@ class ReviewsList extends React.Component {
     super(props);
 
     this.state = {
-      reviews: []
+      allReviews: [],
+      displayedReviews: []
     };
+
+    this.displayMoreReviews = this.displayMoreReviews.bind(this)
   }
 
   componentDidMount() {
     this.fetchReviews();
+  }
+
+  displayMoreReviews() {
+    let reviewLimit = this.state.allReviews.length - this.state.displayedReviews.length;
+    if (reviewLimit > 10) {
+      reviewLimit = 10;
+    }
+
+    const newReviews = this.state.allReviews.slice(
+      this.state.displayedReviews.length, this.state.displayedReviews.length + reviewLimit - 1);
+
+    const newDisplayedReviews = this.state.displayedReviews.concat(newReviews);
+
+    this.setState({
+      displayedReviews: newDisplayedReviews
+    });
   }
 
   fetchReviews() {
@@ -32,12 +51,17 @@ class ReviewsList extends React.Component {
         }
         return res.json();
       })
-      .then((reviews) => {
+      .then((allReviews) => {
         // Ensure our Reviews are sorted chronologically
-        reviews.sort((reviewA, reviewB) => (
+        allReviews.sort((reviewA, reviewB) => (
           new Date(reviewB.createdAt) - new Date(reviewA.createdAt)
         ));
-        this.setState({ reviews });
+
+        const reviewLimit = allReviews.length < 10 ? allReviews.length : 10;
+        this.setState({ 
+          allReviews,
+          displayedReviews: allReviews.slice(0, reviewLimit)
+        });
       })
       .catch((err) => {
         console.error(err);
@@ -45,7 +69,12 @@ class ReviewsList extends React.Component {
   }
 
   render() {
-    const Reviews = this.state.reviews.map(reviewRecord => (
+    const loadMoreReviewsButton = this.state.displayedReviews.length < this.state.allReviews.length ? (
+        <button className="load-button" onClick={ this.displayMoreReviews } >Load More Reviews</button>
+      ) : (
+        null
+      );
+    const Reviews = this.state.displayedReviews.map(reviewRecord => (
       <Review
         key={ reviewRecord.id }
         content={ reviewRecord.content }
@@ -59,6 +88,7 @@ class ReviewsList extends React.Component {
     return (
       <section className="reviews-list">
         { Reviews }
+        { loadMoreReviewsButton }
       </section>
     );
   }
