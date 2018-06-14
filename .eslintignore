@@ -1,4 +1,8 @@
 # /node_modules/* and /bower_components/* in the project root are ignored by default
 
-# Ignore built files except build/index.js
+# Ignore built files
 client/dist/*
+
+# Ignore auto-generated migration and seeder files
+server/migrations/*
+server/seeders/*

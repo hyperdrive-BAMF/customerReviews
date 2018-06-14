@@ -1,13 +1,13 @@
 const express = require('express');
-const router = express.Router();
-
 const models = require('./../models');
-//    _____ __________.___  __________               __                 
+
+const router = express.Router();
+//    _____ __________.___  __________               __
 //   /  _  \\______   \   | \______   \ ____  __ ___/  |_  ____   ______
 //  /  /_\  \|     ___/   |  |       _//  _ \|  |  \   __\/ __ \ /  ___/
-// /    |    \    |   |   |  |    |   (  <_> )  |  /|  | \  ___/ \___ \ 
+// /    |    \    |   |   |  |    |   (  <_> )  |  /|  | \  ___/ \___ \
 // \____|__  /____|   |___|  |____|_  /\____/|____/ |__|  \___  >____  >
-//         \/                       \/                        \/     \/ 
+//         \/                       \/                        \/     \/
 // Common Route Params:
 //   - gameId: Primary Key of a Vapor Game in our system
 
@@ -28,7 +28,7 @@ router.get('/game/:gameId', (req, res) => {
       res.json({
         game
       });
-    })
+    });
 });
 
 router.get('/game/:gameId/reviews/', (req, res) => {
@@ -50,7 +50,6 @@ router.get('/game/:gameId/reviews/', (req, res) => {
   }).then((reviews) => {
     res.json(reviews);
   });
-
 });
 
 router.get('/game/:gameId/reviews/summary', (req, res) => {

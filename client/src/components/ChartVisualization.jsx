@@ -1,32 +1,35 @@
 import React from 'react';
 import * as d3 from 'd3';
+import PropTypes from 'prop-types';
 
 import './../styles/ChartVisualization.scss';
-//  _________ .__                   __ ____   ____.__                    .__  .__                __  .__               
-//  \_   ___ \|  |__ _____ ________/  |\   \ /   /|__| ________ _______  |  | |__|____________ _/  |_|__| ____   ____  
-//  /    \  \/|  |  \\__  \\_  __ \   __\   Y   / |  |/  ___/  |  \__  \ |  | |  \___   /\__  \\   __\  |/  _ \ /    \ 
+//  _________ .__                   __ ____   ____.__                    .__  .__                __  .__
+//  \_   ___ \|  |__ _____ ________/  |\   \ /   /|__| ________ _______  |  | |__|____________ _/  |_|__| ____   ____
+//  /    \  \/|  |  \\__  \\_  __ \   __\   Y   / |  |/  ___/  |  \__  \ |  | |  \___   /\__  \\   __\  |/  _ \ /    \
 //  \     \___|   Y  \/ __ \|  | \/|  |  \     /  |  |\___ \|  |  // __ \|  |_|  |/    /  / __ \|  | |  (  <_> )   |  \
 //   \______  /___|  (____  /__|   |__|   \___/   |__/____  >____/(____  /____/__/_____ \(____  /__| |__|\____/|___|  /
-//          \/     \/     \/                              \/           \/              \/     \/                    \/ 
-
+//          \/     \/     \/                              \/           \/              \/     \/                    \/
 
 class ChartVisualization extends React.Component {
-
   componentDidMount() {
-    const fullWidth = this.props.fullWidth;
-    const fullHeight = this.props.fullHeight;
+    const { fullWidth, fullHeight, dataset } = this.props;
 
-    const margins = { top: 15, right: 10, bottom: 30, left: 50 };
+    const margins = {
+      top: 15,
+      right: 10,
+      bottom: 30,
+      left: 50
+    };
     const width = fullWidth - margins.right - margins.left;
     const height = fullHeight - margins.top - margins.bottom;
 
-    const allDates = this.props.dataset.map(datum => datum.date);
+    const allDates = dataset.map(datum => datum.date);
 
     const svg = d3.select(this.svgElement)
       .attr('width', fullWidth)
       .attr('height', fullHeight)
       .append('g')
-        .attr('transform', `translate(${margins.left}, ${margins.top})`);
+      .attr('transform', `translate(${margins.left}, ${margins.top})`);
 
     // x scale
     const xScale = d3.scaleBand()
@@ -43,7 +46,7 @@ class ChartVisualization extends React.Component {
 
     const yAxis = d3.axisLeft(positiveScale).ticks(5);
 
-    const yAxisElement = svg.append('g')
+    svg.append('g')
       .classed('y axis', true)
       .attr('transform', 'translate(-5, 0)')
       .call(yAxis);
@@ -51,37 +54,47 @@ class ChartVisualization extends React.Component {
     const positiveBarsContainer = svg.append('g')
       .classed('positive-bars-container', true);
 
-    const positiveBars = positiveBarsContainer.selectAll('rect.bar')
+    positiveBarsContainer.selectAll('rect.bar')
       .data(this.props.dataset)
       .enter().append('rect')
       .classed('bar', true)
-      .attr('title', datum => new Date(datum.date).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' }))
+      .attr('title', datum => (
+        new Date(datum.date).toLocaleDateString(
+          'en-US',
+          { year: 'numeric', month: 'long', day: 'numeric' }
+        )
+      ))
       .attr('x', datum => xScale(datum.date))
       .attr('width', xScale.bandwidth())
       .attr('y', datum => positiveScale(datum.positive))
       .attr('height', datum => (height - positiveScale(datum.positive)))
-      .on("mouseover", function(datum, i) {
-        var rect = d3.select(this);
+      .on('mouseover', function mouseOverHandler(datum, i) {
+        const rect = d3.select(this);
         rect.classed('selected', true);
 
-        var rectX = Math.floor(rect.attr('x'));
-        var rectY = Math.floor(rect.attr('y'));
+        const rectX = Math.floor(rect.attr('x'));
+        const rectY = Math.floor(rect.attr('y'));
+
+        const formattedDate = new Date(datum.date).toLocaleDateString(
+          'en-US',
+          { year: 'numeric', month: 'long', day: 'numeric' }
+        )
 
         svg.append('text')
           .classed('date-summary', true)
           .attr('id', `tooltip-${rectX}-${rectY}-${i}`)
-          .text(`${datum.positive.toLocaleString()} positive reviews on ${datum.date}`)
-          .attr('x', function() {
+          .text(`${datum.positive.toLocaleString()} positive reviews on ${formattedDate}`)
+          .attr('x', function centerLabel() {
             return (width / 2) - (this.getBoundingClientRect().width / 2) - 10;
           })
-          .attr('y', height + 23 );
+          .attr('y', height + 23);
       })
-      .on("mouseout", function(datum, i) {
-        var rect = d3.select(this);
+      .on('mouseout', function mouseOutHandler(datum, i) {
+        const rect = d3.select(this);
         rect.classed('selected', false);
 
-        var rectX = Math.floor(rect.attr('x'));
-        var rectY = Math.floor(rect.attr('y'));
+        const rectX = Math.floor(rect.attr('x'));
+        const rectY = Math.floor(rect.attr('y'));
 
         svg.select(`#tooltip-${rectX}-${rectY}-${i}`).remove();
       });
@@ -95,11 +108,19 @@ class ChartVisualization extends React.Component {
   render() {
     return (
       <div className="chart-visualization">
-        <svg ref={ elem => { this.svgElement = elem; } } />
+        <svg ref={ (elem) => { this.svgElement = elem; } } />
       </div>
     );
   }
-
 }
+ChartVisualization.propTypes = {
+  fullWidth: PropTypes.number.isRequired,
+  fullHeight: PropTypes.number.isRequired,
+  dataset: PropTypes.arrayOf(PropTypes.shape({
+    date: PropTypes.string.isRequired,
+    positive: PropTypes.number.isRequired,
+    negative: PropTypes.number.isRequired
+  })).isRequired
+};
 
 export default ChartVisualization;
