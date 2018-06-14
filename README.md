@@ -50,27 +50,53 @@ If your environment is different you may need to consult relevant documentation.
   $ brew services start postgresql
   ``` 
 
-##### 3. TODO: NEED TO ADD INSTRUCTIONS HERE ABOUT SETTING UP postgres user and config.json!!!
-
 ##### 3. Install Node Dependencies (while in this repo's root directory)  
 
   ```sh
   $ npm install
   ```
 
-##### 4. Create Database (PostgreSQL) and run initial Migration and Seeding
+##### 4. Manual Steps to Create your Postgres Database and User
+
+  **NOTE:** Replace <username> and <password> with your desired database admin user's username/pass!
+  These will be used next in your Database Config File! (technically you can also rename your database if desired)
+
+  ```sh
+  $ createdb customerReviews;
+  $ psql --dbname=customerReviews -c "CREATE USER <username> WITH PASSWORD '<password>';"
+  ```
+
+##### 5. Set up your Database Config .json File
+
+  In `server/config` you'll find a file named `config-example.json` with the following:
+
+  ```json
+    "development": {
+      "username": "<username>",
+      "password": "<password>",
+      "database": "customerReviews",
+      "host": "127.0.0.1",
+      "port": 5432,
+      "dialect": "postgres"
+    },
+  ```
+
+  Copy this file to a new file in the same directory named just `config.json` and replace the `<username>` and `<password>`  
+  values with the same username/password values you used in step 3 above.
+
+##### 6. Run initial DB Migration and Seeding
 
   ```sh 
   $ npm run init-db
   ```
 
-##### 5. Compile JS via Webpack
+##### 7. Compile JS via Webpack
 
   ```sh 
   $ npm run build
   ```
 
-##### 6. Start the Webserver and Open Browser _(webserver will run in background)_
+##### 8. Start the Webserver and Open Browser _(webserver will run in background)_
 
   ```sh
   $ npm start
