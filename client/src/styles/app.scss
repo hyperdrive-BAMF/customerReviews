@@ -79,10 +79,10 @@ GRID LAYOUT / STRUCTURE
 */
 $total-columns: 12;
 
-// Container (.container)
-// Boundary-defining top-level class, within which you may nest your .row elements 
-// (and subsequently each of the .row element's .col-* elements)
-.container {
+.customer-reviews {
+  // Container (.customer-reviews)
+  // Boundary-defining top-level class, within which we can nest our .row elements 
+  // (and subsequently each of the .row element's .col-* elements)
   margin: 0 auto;
   padding: 0 15px;
 
@@ -91,29 +91,29 @@ $total-columns: 12;
     // window or device's own width value is below our $container-min value
     width: 970px;
   }
-}
 
-// Rows (.row)
-// Da real CSS Grid Container MVP
-.row {
-  display: grid;
-  grid-template-columns: repeat($total-columns, 1fr);
-  grid-gap: 10px;
-}
+  // Rows (.row)
+  // Da real CSS Grid Container MVP
+  .row {
+    display: grid;
+    grid-template-columns: repeat($total-columns, 1fr);
+    grid-gap: 10px;
+  }
 
-// Columns (.col-*)
+  // Columns (.col-*)
+  // .col-<size>-<span>
+  // size: When within the corresponding breakpoint, sets the element's span width
+  // span: how many columns wide the element should be within its parent .row
 
-// .col-<size>-<span>
-// size: When within the corresponding breakpoint, sets the element's span width
-// span: how many columns wide the element should be within its parent .row
-
-// col-size-span-list: Generates our necessary classes + corresponding grid-column values
-@mixin col-size-span-list($size) {
-  @for $i from 1 through $total-columns {
-    .col-#{$size}-#{$i} {
-      grid-column: span #{$i};
+  // col-size-span-list: Generates our necessary classes + corresponding grid-column values
+  @mixin col-size-span-list($size) {
+    @for $i from 1 through $total-columns {
+      .col-#{$size}-#{$i} {
+        grid-column: span #{$i};
+      }
     }
   }
+
+  // Invoke immediately to generate classes (we're only using md for v1)
+  @include col-size-span-list("md");
 }
-// Invoke immediately to generate classes (we're only using md for v1)
-@include col-size-span-list("md"); 
