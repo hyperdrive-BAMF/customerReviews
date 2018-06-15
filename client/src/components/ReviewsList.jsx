@@ -40,6 +40,10 @@ class ReviewsList extends React.Component {
     this.setState({
       displayedReviews: newDisplayedReviews
     });
+
+    setTimeout(() => {
+      window.scrollBy({ top: window.innerHeight * 0.75, behavior: 'smooth' });
+    }, 150);
   }
 
   fetchReviews() {

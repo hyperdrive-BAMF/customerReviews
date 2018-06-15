@@ -16,9 +16,9 @@ class ChartVisualization extends React.Component {
 
     const margins = {
       top: 15,
-      right: 10,
+      right: 15,
       bottom: 30,
-      left: 50
+      left: 40
     };
     const width = fullWidth - margins.right - margins.left;
     const height = fullHeight - margins.top - margins.bottom;

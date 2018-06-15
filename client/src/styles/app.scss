@@ -19,7 +19,9 @@ $primaryFontFamily: "Motiva Sans", Sans-serif;
 $cobaltSea:  #19273A;
 $blueSteel:  #244660;
 $royalDuvet: #2A475E;
+$stormyIndi: #214462;
 $tealZeal:   #4CBFFA;
+$teelZeel:   #67C1F5;
 $wildAzure:  #276D9A;
 /* White/Grey */
 $shaleSlate:   #ACB2B8;
@@ -27,14 +29,7 @@ $officeGravel: #8091A2;
 $overcastSky:  #E5E5E5;
 /* Dark/Black */
 $theAbyss:     #141F2E;
-$midnightSand: #00000033;
-
-// Base Style
-body {
-  background-color: $cobaltSea;
-  color: $shaleSlate;
-  font-family: $primaryFontFamily;
-}
+$midnightSand: #0E1826;
 
 /*
 RESPONSIVE DESIGN UTILITIES
@@ -81,16 +76,26 @@ GRID LAYOUT / STRUCTURE
 $total-columns: 12;
 
 .customer-reviews {
+  background-color: $cobaltSea;
+  background-image: linear-gradient(#1D384D 0%, $cobaltSea 800px);
+  color: $shaleSlate;
+  display: block;
+  font-family: $primaryFontFamily;
+  width: 100%;
+
   // Container (.customer-reviews)
   // Boundary-defining top-level class, within which we can nest our .row elements 
   // (and subsequently each of the .row element's .col-* elements)
-  margin: 0 auto;
-  padding: 0 15px;
+  .container {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 15px 0;
 
-  @include size-md {
-    // Will switch to a fix-width "viewport" by defining a width here when the
-    // window or device's own width value is below our $container-min value
-    width: 970px;
+    @include size-md {
+      // Will switch to a fix-width "viewport" by defining a width here when the
+      // window or device's own width value is below our $container-min value
+      width: 970px;
+    }
   }
 
   // Rows (.row)

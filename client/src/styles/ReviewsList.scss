@@ -11,10 +11,10 @@
   padding: 10px 0 20px;
 
   .load-button {
-    color: $overcastSky;
-    background-color: $wildAzure;
-    border: solid 1px $wildAzure;
-    border-radius: 8px;
+    color: $teelZeel;
+    background-color: $stormyIndi;
+    border: solid 1px $stormyIndi;
+    border-radius: 4px;
     line-height: 30px;
     font-size: 20px;
     min-height: 30px;
@@ -24,6 +24,8 @@
 
   .load-button:hover {
     color: #FFF;
+    background-color: $wildAzure;
+    border: solid 1px $stormyIndi;
   }
   .load-button:focus {
     outline: none;

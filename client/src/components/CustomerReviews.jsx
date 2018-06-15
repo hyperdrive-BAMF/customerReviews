@@ -13,11 +13,13 @@ import './../styles/CustomerReviews.scss';
 
 const CustomerReviews = props => (
   <div className="customer-reviews">
-    <header>
-      <h3>Customer Reviews</h3>
-    </header>
-    <ReviewsChart gameId={ props.gameId } />
-    <ReviewsList gameId={ props.gameId } />
+    <div className="container">
+      <header>
+        <h3>Customer Reviews</h3>
+      </header>
+      <ReviewsChart gameId={ props.gameId } />
+      <ReviewsList gameId={ props.gameId } />
+    </div>
   </div>
 );
 CustomerReviews.propTypes = {

@@ -87,6 +87,7 @@ If your environment is different you may need to consult relevant documentation.
 ##### 6. Run initial DB Migration and Seeding
 
   ```sh 
+  $ npm install -g sequelize-cli
   $ npm run init-db
   ```
 
